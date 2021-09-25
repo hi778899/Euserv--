@@ -1,0 +1,38 @@
+name: 'EUserv Auto Extend'
+
+on:
+  push:
+  watch:
+    types: started
+    branches:
+      - main
+  schedule:
+    - cron: '00 02 * * *'
+
+jobs:
+  auto_renew:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout codes'
+        uses: actions/checkout@v2
+
+      - name: 'Set python'
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+
+      - name: 'Install dependencies'
+        run: |
+          python -m pip install --upgrade requests
+          python -m pip install --upgrade beautifulsoup4
+      - name: 'Auto_renew'
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SCKEY: ${{ secrets.SCKEY }}
+          msg_from: ${{ secrets.msg_from }}
+          passwd: ${{ secrets.passwd }}
+          msg_to: ${{ secrets.msg_to }}
+          smtp: ${{ secrets.smtp }}
+          port: ${{ secrets.port }}
+        run: python main.py
