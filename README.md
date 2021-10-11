@@ -8,6 +8,13 @@ Euserv自动续期
 USERNAME: 你的EUserv账户邮箱或Customer ID 第二个账户
 PASSWORD: 第一个账户密码 第二个账户密码
 ```
+###
+```
+USERID = 'arun56'
+APIKEY = 'wMjXmBIcHcdYqO2RrsVN'
+```
+APIKEY 每天有 100 次免费搜索
+采用 TrueCaptcha API 处理验证码识别，代码默认使用 demo apikey，最好去 https://apitruecaptcha.org 注册，然后使用自己的 apikey
 ### Server酱的推送
 ```
 SCKEY: (可选)这里填Server酱的key，无需推送可不填
@@ -35,5 +42,5 @@ schedule:
 
 如果你在Github上编辑此文件，Github会为你提供即时的注释，即类似“Runs at 01:50 UTC on Sun and Wed”，请根据这一注释自行设置脚本执行时间。
 # 注意
-德鸡加入了验证码登录，本脚本不能百分百保证续期。
-破解德鸡验证码方法：先用无痕登陆后再登出，再普通登陆一次输入验证码即可！自动续期就正常了
+德鸡加入了验证码登录，本脚本已更新。
+增加 登录重试机制，默认为 5 次
